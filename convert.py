@@ -8,12 +8,15 @@ from helpers import print_human_readable
 load_dotenv()
 
 from data.text import prerequisites
+from data.hard_cases import hard_cases
 
 
 OPENROUTER_API_KEY = os.getenv("OPENROUTER_API_KEY")
 INSTRUCTIONS_PATH = "instructions.md"
 OUTPUT_PATH = "data/converted.json"
-MODEL = "mistralai/mistral-7b-instruct:free"
+MODEL_1 = "google/gemini-2.5-flash-lite-preview-06-17"
+MODEL_2 = "mistralai/mistral-7b-instruct:free"
+MODEL = MODEL_1
 
 def load_instructions():
     with open(INSTRUCTIONS_PATH, "r", encoding="utf-8") as f:
@@ -32,8 +35,10 @@ def call_openrouter(prompt:str, instructions:str):
     data: dict[str, object] = {
         "model": MODEL,
         "messages": messages,
-        "max_tokens": 2048,
-        "temperature": 0
+        "reasoning" : {
+            "effort": "high",
+            "exclude": False, 
+        }
     }
     response = requests.post(url, headers=headers, json=data)
     if response.status_code != 200:
@@ -42,16 +47,27 @@ def call_openrouter(prompt:str, instructions:str):
         response.raise_for_status()
     else: 
         try:
-            content = response.json()["choices"][0]["message"]["content"]
-            # Remove markdown code block if present
-            if content.strip().startswith("```json"):
-                content = content.strip().split("```json")[1].split("```")[0].strip()
-            return json.loads(content)
+            try:
+                choices = response.json().get("choices", [])
+                if not choices or "message" not in choices[0] or "content" not in choices[0]["message"]:
+                    raise ValueError("Response JSON does not contain expected 'choices/message/content' structure.")
+                content = choices[0]["message"]["content"]
+                # Remove markdown code block if present
+                if content.strip().startswith("```json"):
+                    content = content.strip().split("```json", 1)[1].split("```", 1)[0].strip()
+                elif content.strip().startswith("```"):
+                    content = content.strip().split("```", 1)[1].split("```", 1)[0].strip()
+                return json.loads(content)
+            except (KeyError, IndexError, ValueError, json.JSONDecodeError) as e:
+                print(f"Failed to parse response content: {e}")
+                # print(f"Raw response: {response.text}")
+                raise e
         except Exception as e:
-            print(f"Failed to JSON response: {response.content}")
+            print(f"Failed to JSON response.")
             raise e
 
 def main():
+    global MODEL
     
     
     os.makedirs(os.path.dirname(OUTPUT_PATH), exist_ok=True)
@@ -65,27 +81,49 @@ def main():
             results = json.load(f)
     else:
         results = {}
+    
+    count_existing = sum(1 for text in prerequisites if text in results)
+    count_hard = sum(1 for text in prerequisites if text in hard_cases)
+    remaining = len(prerequisites) - count_existing - count_hard
+    
+    print("STATUS REPORT:")
+    print(f"{count_existing} out of {len(prerequisites)} prerequisites already exist in results.")
+    print(f"{count_hard} out of {len(prerequisites)} prerequisites cannot be converted.")
+    print(f"{remaining} prerequisites remain to be converted.")
 
     for text in prerequisites:
-        if text in results:
-            print(f"Skipping {text[17:37]}... because it already exists.")
+        
+        # temporarily skip bad ones
+        if "MDT" in text or "LET" in text:
             continue
         
-        if len(text) > 140:
-            print(f"Skipping {text[17:37]}... because it is too complicated.")
+        if text in hard_cases:
+            print(f"Skipping {text[17:37]}... because we can't handle it.")
             continue
+        
+        if text in results:
+            # print(f"Skipping {text[17:37]}... because it already exists.")
+            continue
+        
+        # if len(text) > 150:
+        #     print(f"Skipping {text[17:37]}... because it is too complicated.")
+        #     continue
         
         print("="*50)
-        print(f"Processing: {text}")
+        print(f"{text}")
         print()
         responses: list[dict[str, object]] = []
         
         # do it twice
         attempts = 0
-        max_attempts = 2
+        max_attempts = 1
+        MODEL = MODEL_1
         while True:
             if attempts >= max_attempts:
                 break
+            
+            if attempts > 0:
+                MODEL = MODEL_2
             
             try:
                 result = call_openrouter(text, instructions)
@@ -98,14 +136,22 @@ def main():
                 print()
                 attempts += 1
             except Exception as e:
-                input(f"Error on attempt {attempts}. Error: {e}")
+                print(f"Error on attempt {attempts}.")
                 attempts += 0.5 # don't error infinitely
+                input("Press enter to try again: ")
+                print()
         
         while True:
+            if len(responses) == 0:
+                input("No responses generated. Press enter to continue: ")
+                break
+            
             print("-"*40)
             print("Conversion finished.")
-            if responses[0] == responses[1]:
+            if len(responses) >= 2 and responses[0] == responses[1]:
                 print("Both responses match!")
+            elif len(responses) == 0:
+                print("Failed to generate conversion.")
             else:
                 print("RESPONSES DO NOT MATCH.")
             print("(p): print raw responses (s): skip")
@@ -117,8 +163,12 @@ def main():
                     print(json.dumps(r, indent=2, ensure_ascii=False))
                     print()
                 print("-"*40)
-            elif i == '1' or i == 2:
-                results[text] = responses
+                
+            elif i == '1' or i == '2':
+                if i == '1':
+                    results[text] = responses[0]
+                elif i == '2':
+                    results[text] = responses[1]
                 with open(OUTPUT_PATH, "w", encoding="utf-8") as f:
                     json.dump(results, f, indent=2, ensure_ascii=False)
                 break

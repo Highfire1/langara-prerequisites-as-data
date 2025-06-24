@@ -1,14 +1,42 @@
+# Prerequisite Text to JSON Conversion Guide
+
 Your role is to convert the prerequisite text of a college course into machine-parseable JSON data.
 
-## Top-Level Structure
+---
 
-The output JSON must have this structure:
+## Table of Contents
+
+1. [Overview](#overview)
+2. [Top-Level JSON Structure](#top-level-json-structure)
+3. [Node Types](#node-types)
+    - [PrerequisiteGroup](#prerequisitegroup)
+    - [PrerequisiteRequirement](#prerequisiterequirement)
+4. [Requirement Types](#requirement-types)
+    - [ContentScoreRequirement](#contentscorerequirement)
+    - [OtherRequirement](#otherrequirement)
+5. [Content Types](#content-types)
+6. [Score Types](#score-types)
+7. [Mapping & Disambiguation Rules](#mapping--disambiguation-rules)
+8. [Special Cases](#special-cases)
+9. [What Not to Include](#what-not-to-include)
+10. [Examples](#examples)
+
+---
+
+## Overview
+
+Convert course prerequisite text into a structured JSON format for machine parsing. Follow the schema and rules below. When in doubt, use `OtherRequirement` and copy the relevant text.
+
+---
+
+## Top-Level JSON Structure
+
 ```json
 {
     "prerequisites": null | PrerequisiteNode
 }
 ```
-- If there are no prerequisites, use `"prerequisites": null`.
+- Use `null` if there are no prerequisites.
 
 ---
 
@@ -16,7 +44,7 @@ The output JSON must have this structure:
 
 ### PrerequisiteNode
 
-A PrerequisiteNode is either a `PrerequisiteGroup` or a `PrerequisiteRequirement`.
+A `PrerequisiteNode` is either a `PrerequisiteGroup` or a `PrerequisiteRequirement`.
 
 #### PrerequisiteGroup
 
@@ -29,123 +57,33 @@ Represents a logical grouping of requirements.
     "children": [ PrerequisiteNode, ... ]
 }
 ```
-- Use `"AND"` for "all of the following", "and", or similar.
-- Use `"OR"` for "one of the following", "or", or similar.
+- `"AND"`: All conditions must be met.
+- `"OR"`: Any one condition must be met.
 - Groups can be nested.
 
 #### PrerequisiteRequirement
 
-A single requirement, one of the following types:
-- `ContentScoreRequirement`
-- `OtherRequirement`
+A single requirement, either a `ContentScoreRequirement` or `OtherRequirement`.
 
 ---
 
 ## Requirement Types
 
-#### ContentScoreRequirement
+### ContentScoreRequirement
 
-Represents a required grade, standing, completion, credits, or completed courses in a course, exam, or subject.
+Represents a required grade, standing, completion, credits, or completed courses.
 
 ```json
 {
     "type": "ContentScoreRequirement",
-    "content": ContentCollegeCourse | ContentOtherCourse | ContentExam | ContentCollegeCredits | ContentCollegeCompletedCourses,
-    "score": ScoreLetter | ScorePercentage | ScoreExam | ScoreLiteral | ScoreCompletion
+    "content": ContentType,
+    "score": ScoreType
 }
 ```
 
-##### ContentCollegeCourse
+### OtherRequirement
 
-For post-secondary courses (e.g., ENGL 1123, CPSC 1150):
-
-```json
-{
-    "type": "ContentCollegeCourse",
-    "subject": string, // e.g. "ENGL"
-    "courseCode": string, // e.g. "1107"
-    "canBeTakenConcurrently": bool // true if explicitly stated, otherwise false
-}
-```
-
-##### ContentOtherCourse
-
-For non-post-secondary courses (e.g., English Studies 12, Chemistry 12):
-
-```json
-{
-    "type": "ContentOtherCourse",
-    "course": string
-}
-```
-
-##### ContentExam
-
-For exams (e.g., IELTS, TOEFL, LET):
-
-```json
-{
-    "type": "ContentExam",
-    "exam": string // exam name or code, if available
-}
-```
-
-##### ContentCollegeCredits
-
-Represents a credit-based requirement.
-
-```json
-{
-    "type": "ContentCollegeCredits",
-    "subject": [string] | null, // e.g. ["ENGL", "COMM"], or null for "any course"
-    "credits": int,
-    "year": int | null, // 1 for first year, 2 for second year, etc., null if not specified
-    "universityTransferable": bool // true if explicitly stated, otherwise false
-}
-```
-- If "any course" or "any undergraduate course" is stated, set `subject` to null.
-- If "first year", "second year", etc. is mentioned, set `year` accordingly.
-
-##### ContentCollegeCompletedCourses
-
-Represents a requirement to complete a number of courses.
-
-```json
-{
-    "type": "ContentCollegeCompletedCourses",
-    "subjects": [string] | null, // e.g. ["CPSC"], or null for "any subject"
-    "year": int | null,
-    "universityTransferable": bool // true if explicitly stated, otherwise false
-}
-```
-- Use the same rules for `subjects` and `year` as in `ContentCollegeCredits`.
-
-##### Score Types
-
-- **ScoreLetter**: For letter grades (e.g., "C", "B+")
-    ```json
-    { "type": "ScoreLetter", "minGrade": string }
-    ```
-- **ScorePercentage**: For percentage grades (e.g., 70%)
-    ```json
-    { "type": "ScorePercentage", "minPercent": int }
-    ```
-- **ScoreExam**: For exam scores that are not percentages
-    ```json
-    { "type": "ScoreExam", "minScore": float }
-    ```
-- **ScoreLiteral**: For literal scores (e.g., "S", "SR", "Pass") or exam codes with leading zeros (e.g., "LETN 02")
-    ```json
-    { "type": "ScoreLiteral", "score": string }
-    ```
-- **ScoreCompletion**: Use when only completion is required and no score is specified
-    ```json
-    { "type": "ScoreCompletion" }
-    ```
-
-#### OtherRequirement
-
-For requirements that do not fit the above, such as "departmental permission", "demonstrated competency", or "equivalent".
+For requirements not covered by the schema (e.g., "departmental permission", "demonstrated competency", "equivalent").
 
 ```json
 {
@@ -156,21 +94,116 @@ For requirements that do not fit the above, such as "departmental permission", "
 
 ---
 
-## Mapping and Disambiguation Rules
+## Content Types
 
-- **"All of the following"**: Use a `PrerequisiteGroup` with `"logic": "AND"`.
-- **"One of the following"**: Use a `PrerequisiteGroup` with `"logic": "OR"`.
-- **Nested logic**: Use nested `PrerequisiteGroup` objects as needed.
-- **Grade applies to multiple courses**: If a grade is stated once for a group of courses, apply it to each course in the group.
-- **"May be taken concurrently"**: Set `canBeTakenConcurrently: true` only if explicitly stated for a course.
-- **"Permission of..."**: Use `OtherRequirement` with the note, and group with courses using `PrerequisiteGroup` if needed.
-- **"Recommended" or "strongly recommended"**: Do not include these in the JSON.
-- **"No prerequisites" or "None"**: Use `"prerequisites": null`.
-- **"Will be announced..." or similar**: Do not include these in the JSON.
-- **"Equivalent", "demonstrated competency"**: Use `OtherRequirement` with the note.
-- **"Any" or "any first-year philosophy course"**: Set `subjects` or `subject` to the subject (e.g., "PHIL"), and `year` to the year if stated, otherwise null.
-- **Ambiguous or unstated grades**: If a grade is not specified, use `ScoreCompletion`.
-- **Trailing commas**: Do not use trailing commas in JSON.
+- **ContentCollegeCourse**: For post-secondary courses (e.g., ENGL 1123)
+    ```json
+    {
+        "type": "ContentCollegeCourse",
+        "subject": string,
+        "courseCode": string,
+        "canBeTakenConcurrently": bool
+    }
+    ```
+- **EquivalentCourse**: For "course1, course2, or equivalent"
+    ```json
+    { "type": "EquivalentCourse" }
+    ```
+- **ContentOtherCourse**: For non-post-secondary courses (e.g., English Studies 12)
+    ```json
+    {
+        "type": "ContentOtherCourse",
+        "course": string
+    }
+    ```
+- **ContentExam**: For exams (e.g., IELTS, TOEFL, LET)
+    ```json
+    {
+        "type": "ContentExam",
+        "exam": string
+    }
+    ```
+- **ContentCollegeCredits**: For credit-based requirements
+    ```json
+    {
+        "type": "ContentCollegeCredits",
+        "credits": int,
+        "year": int | null,
+        "universityTransferable": bool,
+        "subjects": [string] | null
+    }
+    ```
+- **ContentCollegeCompletedCourses**: For requirements to complete a number of courses in a subject
+    ```json
+    {
+        "type": "ContentCollegeCompletedCourses",
+        "subjects": [string] | null,
+        "count": int,
+        "year": int | null,
+        "universityTransferable": bool
+    }
+    ```
+
+---
+
+## Score Types
+
+- **ScoreLetter**: Letter grades (e.g., "C", "B+")
+    ```json
+    { "type": "ScoreLetter", "minGrade": string }
+    ```
+- **ScorePercentage**: Percentage grades (e.g., 70%)
+    ```json
+    { "type": "ScorePercentage", "minPercent": int }
+    ```
+- **ScoreExam**: Exam scores that are not percentages
+    ```json
+    { "type": "ScoreExam", "minScore": float }
+    ```
+- **ScoreLiteral**: Literal scores (e.g., "S", "SR", "Pass")
+    ```json
+    { "type": "ScoreLiteral", "score": string }
+    ```
+- **ScoreCompletion**: Only completion required, no score specified
+    ```json
+    { "type": "ScoreCompletion" }
+    ```
+
+---
+
+## Mapping & Disambiguation Rules
+
+- **"All of the following"**: Use `PrerequisiteGroup` with `"logic": "AND"`.
+- **"One of the following"**: Use `PrerequisiteGroup` with `"logic": "OR"`.
+- **Nested logic**: Use nested groups as needed.
+- **Grade applies to multiple courses**: Apply the grade to each course.
+- **"May be taken concurrently"**: Set `canBeTakenConcurrently: true` only if explicitly stated.
+- **"Permission of..."**: Use `OtherRequirement` with the note.
+- **"Recommended"**: Do not include.
+- **"No prerequisites" or "None"**: Use `null`.
+- **"Equivalent", "demonstrated competency"**: Use `OtherRequirement`.
+- **"Any" or "any first-year philosophy course"**: Set `subjects` and `year` accordingly.
+- **Ambiguous or unstated grades**: Use `ScoreCompletion`.
+- **Trailing commas**: Do not use them.
+
+---
+
+## Special Cases
+
+- **MDT (Math Diagnostic Test)**: Use `ContentExam` with `"exam": "MDT"` and `ScoreExam` for the score. Drop leading zeros in the score.
+- **LPI (Language Proficiency Index)**: Do not include, even if mentioned.
+- **If unsure**: Use `OtherRequirement` and copy the relevant text.
+
+---
+
+## What Not to Include
+
+- Do **not** include recommended/suggested courses.
+- Do **not** include validity periods (e.g., "prerequisites are valid for three years").
+- Do **not** include statements like "Will be announced in the Registration Guide and Course Schedule."
+- Do **not** include trailing commas in JSON.
+- Do **not** include LPI test information.
+- Do **not** add a "note" field unless using `OtherRequirement`.
 
 ---
 
@@ -179,7 +212,7 @@ For requirements that do not fit the above, such as "departmental permission", "
 ### Example 1
 
 **Text:**  
-Prerequisite(s): A minimum "C" grade in PHOT 1100 or 1105; or permission of the department.
+Prerequisite(s): A minimum "C" grade in CPSC 1280; and a minimum "C" grade in CPSC 1160 or 1181; or permission of the department.
 
 ```json
 {
@@ -188,30 +221,55 @@ Prerequisite(s): A minimum "C" grade in PHOT 1100 or 1105; or permission of the 
         "logic": "OR",
         "children": [
             {
-                "type": "ContentScoreRequirement",
-                "content": {
-                    "type": "ContentCollegeCourse",
-                    "subject": "PHOT",
-                    "courseCode": "1100",
-                    "canBeTakenConcurrently": false
-                },
-                "score": {
-                    "type": "ScoreLetter",
-                    "minGrade": "C"
-                }
-            },
-            {
-                "type": "ContentScoreRequirement",
-                "content": {
-                    "type": "ContentCollegeCourse",
-                    "subject": "PHOT",
-                    "courseCode": "1105",
-                    "canBeTakenConcurrently": false
-                },
-                "score": {
-                    "type": "ScoreLetter",
-                    "minGrade": "C"
-                }
+                "type": "PrerequisiteGroup",
+                "logic": "AND",
+                "children": [
+                    {
+                        "type": "ContentScoreRequirement",
+                        "content": {
+                            "type": "ContentCollegeCourse",
+                            "subject": "CPSC",
+                            "courseCode": "1280",
+                            "canBeTakenConcurrently": false
+                        },
+                        "score": {
+                            "type": "ScoreLetter",
+                            "minGrade": "C"
+                        }
+                    },
+                    {
+                        "type": "PrerequisiteGroup",
+                        "logic": "OR",
+                        "children": [
+                            {
+                                "type": "ContentScoreRequirement",
+                                "content": {
+                                    "type": "ContentCollegeCourse",
+                                    "subject": "CPSC",
+                                    "courseCode": "1160",
+                                    "canBeTakenConcurrently": false
+                                },
+                                "score": {
+                                    "type": "ScoreLetter",
+                                    "minGrade": "C"
+                                }
+                            },
+                            {
+                                "type": "ContentScoreRequirement",
+                                "content": {
+                                    "type": "ContentCollegeCourse",
+                                    "subject": "CPSC",
+                                    "courseCode": "1181",
+                                    "canBeTakenConcurrently": false
+                                },
+                                "score": {
+                                    "type": "ScoreLetter",
+                                    "minGrade": "C"
+                                }
+                            }
+                        ]
+                    }
+                ]
             },
             {
                 "type": "OtherRequirement",
@@ -347,43 +405,23 @@ Prerequisite(s): None. CSIS 1410 is recommended. Prerequisites are valid for onl
 ### Example 6
 
 **Text:**
-Prerequisite(s): A minimum "C-" grade in CHEM 1118 or a minimum "B" grade in Chemistry 12; and a minimum "C" grade in MATH 1152 or Precalculus 12, or MDT 75. Prerequisites are only valid for three years.
+Grade 12 Spanish; or a minimum "C+" grade in SPAN 1215 or 1218. May not be taken concurrently with SPAN 1118.
 
 ```json
 {
     "prerequisites": {
         "type": "PrerequisiteGroup",
-        "logic": "AND",
+        "logic": "OR",
         "children": [
             {
-                "type": "PrerequisiteGroup",
-                "logic": "OR",
-                "children": [
-                    {
-                        "type": "ContentScoreRequirement",
-                        "content": {
-                            "type": "ContentCollegeCourse",
-                            "subject": "CHEM",
-                            "courseCode": "1118",
-                            "canBeTakenConcurrently": false
-                        },
-                        "score": {
-                            "type": "ScoreLetter",
-                            "minGrade": "C-"
-                        }
-                    },
-                    {
-                        "type": "ContentScoreRequirement",
-                        "content": {
-                            "type": "ContentOtherCourse",
-                            "course": "Chemistry 12"
-                        },
-                        "score": {
-                            "type": "ScoreLetter",
-                            "minGrade": "B"
-                        }
-                    }
-                ]
+                "type": "ContentScoreRequirement",
+                "content": {
+                    "type": "ContentOtherCourse",
+                    "course": "Spanish 12"
+                },
+                "score": {
+                    "type": "ScoreCompletion"
+                }
             },
             {
                 "type": "PrerequisiteGroup",
@@ -393,35 +431,26 @@ Prerequisite(s): A minimum "C-" grade in CHEM 1118 or a minimum "B" grade in Che
                         "type": "ContentScoreRequirement",
                         "content": {
                             "type": "ContentCollegeCourse",
-                            "subject": "MATH",
-                            "courseCode": "1152",
+                            "subject": "SPAN",
+                            "courseCode": "1215",
                             "canBeTakenConcurrently": false
                         },
                         "score": {
                             "type": "ScoreLetter",
-                            "minGrade": "C"
+                            "minGrade": "C+"
                         }
                     },
                     {
                         "type": "ContentScoreRequirement",
                         "content": {
-                            "type": "ContentOtherCourse",
-                            "course": "Precalculus 12"
+                            "type": "ContentCollegeCourse",
+                            "subject": "SPAN",
+                            "courseCode": "1218",
+                            "canBeTakenConcurrently": false
                         },
                         "score": {
                             "type": "ScoreLetter",
-                            "minGrade": "C"
-                        }
-                    },
-                    {
-                        "type": "ContentScoreRequirement",
-                        "content": {
-                            "type": "ContentExam",
-                            "exam": "MDT"
-                        },
-                        "score": {
-                            "type": "ScoreExam",
-                            "minScore" : 75
+                            "minGrade": "C+"
                         }
                     }
                 ]
@@ -431,25 +460,44 @@ Prerequisite(s): A minimum "C-" grade in CHEM 1118 or a minimum "B" grade in Che
 }
 ```
 
+
 ### Example 7
 
 **Text:**  
-Prerequisite(s): Completion of 15 credits of undergraduate courses.
-
+Prerequisite(s): 18 credits including three credits of university-transferrable English.
 ```json
 {
     "prerequisites": {
-        "type": "ContentScoreRequirement",
-        "content": {
-            "type": "ContentCollegeCredits",
-            "subject": null,
-            "credits": 15,
-            "year": null,
-            "universityTransferable": false
-        },
-        "score": {
-            "type": "ScoreCompletion"
-        }
+        "type": "PrerequisiteGroup",
+        "logic": "AND",
+        "children": [
+            {
+                "type": "ContentScoreRequirement",
+                "content": {
+                    "type": "ContentCollegeCredits",
+                    "subjects": null,
+                    "credits": 18,
+                    "year": null,
+                    "universityTransferable": false
+                },
+                "score": {
+                    "type": "ScoreCompletion"
+                }
+            },
+            {
+                "type": "ContentScoreRequirement",
+                "content": {
+                    "type": "ContentCollegeCredits",
+                    "subjects": ["ENGL"],
+                    "credits": 3,
+                    "year": null,
+                    "universityTransferable": true
+                },
+                "score": {
+                    "type": "ScoreCompletion"
+                }
+            }
+        ]
     }
 }
 ```
@@ -457,21 +505,32 @@ Prerequisite(s): Completion of 15 credits of undergraduate courses.
 ### Example 8
 
 **Text:**  
-Prerequisite(s): Completion of 3 second-year CPSC courses (university-transferable).
+Any first-year philosophy course or consent of the instructor.
 
 ```json
 {
     "prerequisites": {
-        "type": "ContentScoreRequirement",
-        "content": {
-            "type": "ContentCollegeCompletedCourses",
-            "subjects": ["CPSC"],
-            "year": 2,
-            "universityTransferable": true
-        },
-        "score": {
-            "type": "ScoreCompletion"
-        }
+        "type": "PrerequisiteGroup",
+        "logic": "OR",
+        "children": [
+            {
+                "type": "ContentScoreRequirement",
+                "content": {
+                    "type": "ContentCollegeCompletedCourses",
+                    "subjects": ["PHIL"],
+                    "count": 1,
+                    "year": 1,
+                    "universityTransferable": false
+                },
+                "score": {
+                    "type": "ScoreCompletion"
+                }
+            },
+            {
+                "type": "OtherRequirement",
+                "note": "consent of the instructor"
+            }
+        ]
     }
 }
 ```
@@ -539,23 +598,177 @@ Note: if a grade is not stated, try to use a letter grade that has already been 
 }
 ```
 
+### Example 10
+
+**Text:**  
+Prerequisite(s): Completion of a minimum 30 credits including a minimum "C" grade in three credits of university-transferable English or communications.
+
+```json
+{
+    "prerequisites": {
+        "type": "PrerequisiteGroup",
+        "logic": "AND",
+        "children": [
+            {
+                "type": "ContentScoreRequirement",
+                "content": {
+                    "type": "ContentCollegeCredits",
+                    "subjects": null,
+                    "credits": 30,
+                    "year": null,
+                    "universityTransferable": false
+                },
+                "score": {
+                    "type": "ScoreCompletion"
+                }
+            },
+            {
+                "type": "ContentScoreRequirement",
+                "content": {
+                    "type": "ContentCollegeCredits",
+                    "subjects": ["ENGL", "CMNS"],
+                    "credits": 3,
+                    "year": null,
+                    "universityTransferable": true
+                },
+                "score": {
+                    "type": "ScoreLetter",
+                    "minGrade": "C"
+                }
+            }
+        ]
+    }
+}
+```
+
+### Example 11
+
+**Text:**  
+Prerequisite(s): A minimum "C-" grade in one of the following: MATH 1271, 1273, 1274, or 1275; and MATH 1252 or 2362 (MATH 1252 or 2362 may be taken concurrently).
+
+```json
+{
+    "prerequisites": {
+        "type": "PrerequisiteGroup",
+        "logic": "AND",
+        "children": [
+            {
+                "type": "PrerequisiteGroup",
+                "logic": "OR",
+                "children": [
+                    {
+                        "type": "ContentScoreRequirement",
+                        "content": {
+                            "type": "ContentCollegeCourse",
+                            "subject": "MATH",
+                            "courseCode": "1271",
+                            "canBeTakenConcurrently": false
+                        },
+                        "score": {
+                            "type": "ScoreLetter",
+                            "minGrade": "C-"
+                        }
+                    },
+                    {
+                        "type": "ContentScoreRequirement",
+                        "content": {
+                            "type": "ContentCollegeCourse",
+                            "subject": "MATH",
+                            "courseCode": "1273",
+                            "canBeTakenConcurrently": false
+                        },
+                        "score": {
+                            "type": "ScoreLetter",
+                            "minGrade": "C-"
+                        }
+                    },
+                    {
+                        "type": "ContentScoreRequirement",
+                        "content": {
+                            "type": "ContentCollegeCourse",
+                            "subject": "MATH",
+                            "courseCode": "1274",
+                            "canBeTakenConcurrently": false
+                        },
+                        "score": {
+                            "type": "ScoreLetter",
+                            "minGrade": "C-"
+                        }
+                    },
+                    {
+                        "type": "ContentScoreRequirement",
+                        "content": {
+                            "type": "ContentCollegeCourse",
+                            "subject": "MATH",
+                            "courseCode": "1275",
+                            "canBeTakenConcurrently": false
+                        },
+                        "score": {
+                            "type": "ScoreLetter",
+                            "minGrade": "C-"
+                        }
+                    }
+                ]
+            },
+            {
+                "type": "PrerequisiteGroup",
+                "logic": "OR",
+                "children": [
+                    {
+                        "type": "ContentScoreRequirement",
+                        "content": {
+                            "type": "ContentCollegeCourse",
+                            "subject": "MATH",
+                            "courseCode": "1252",
+                            "canBeTakenConcurrently": true
+                        },
+                        "score": {
+                            "type": "ScoreLetter",
+                            "minGrade": "C-"
+                        }
+                    },
+                    {
+                        "type": "ContentScoreRequirement",
+                        "content": {
+                            "type": "ContentCollegeCourse",
+                            "subject": "MATH",
+                            "courseCode": "2362",
+                            "canBeTakenConcurrently": true
+                        },
+                        "score": {
+                            "type": "ScoreLetter",
+                            "minGrade": "C-"
+                        }
+                    }
+                ]
+            }
+        ]
+    }
+}
+```
+
+### Example 12
+
+**Text:**  
+Prerequisite(s): Permission of the department based on the MDT process (MDT 080)
+
+NOTE: MDT (Math Diagnostic Test) is a **special** case, separate the number from the exam, and drop the leading zero, if it exists
+You must **use ScoreExam with the MDT**
+
+```json
+{
+    "type": "ContentScoreRequirement",
+    "content": {
+        "type": "ContentExam",
+        "exam": "MDT"
+    },
+    "score": {
+        "type": "ScoreExam",
+        "minScore": 80
+    }
+}
+```
+
 ---
 
-## What Not to Include
-
-- Do **not** include statements about validity periods (e.g., "prerequisites are valid for three years").
-- Do **not** include recommended or suggested courses.
-- Do **not** include statements like "Will be announced in the Registration Guide and Course Schedule."
-- Do **not** include trailing commas in JSON.
-- If the text says there are **None.** or **No prerequisites.**, then return null
-
----
-
-## Special Cases
-
-- If a requirement is ambiguous or not covered, use the `OtherRequirement` type and copy the relevant text into the `note` field.
-- If a requirement is "No prerequisites" or "None", use `"prerequisites": null`.
-
----
-
-**If you are unsure how to encode a requirement, use the `OtherRequirement` type and copy the relevant text into the `note`
+**If you are unsure how to encode a requirement, use the `OtherRequirement` type and copy the relevant text into the `note`.**

@@ -41,16 +41,18 @@ def print_prerequisite_node(node:dict[dict | str] | None, indent=0): # type: ign
             conc = content.get("canBeTakenConcurrently", False)
             conc_str = " (may be taken concurrently)" if conc else ""
             print(f'{spaces}{subj} {code}{conc_str} ({score_str})')
+        elif content_type == "EquivalentCourse":
+            print(f'{spaces}Equivalent course ({score_str})')
         elif content_type == "ContentOtherCourse":
             print(f'{spaces}{content.get("course")} ({score_str})')
         elif content_type == "ContentExam":
             print(f'{spaces}{content.get("exam")} ({score_str})')
         elif content_type == "ContentCollegeCredits":
-            subject = content.get("subject")
+            subjects = content.get("subjects")
             credits = content.get("credits")
             year = content.get("year")
             ut = content.get("universityTransferable", False)
-            subj_str = "any course" if subject is None else ", ".join(subject)
+            subj_str = "any course" if subjects is None else ", ".join(subjects)
             year_str = f", year {year}" if year else ""
             ut_str = "UT " if ut else ""
             print(f'{spaces}{credits} credits of {ut_str}{subj_str}{year_str} ({score_str})')
@@ -58,10 +60,12 @@ def print_prerequisite_node(node:dict[dict | str] | None, indent=0): # type: ign
             subjects = content.get("subjects")
             year = content.get("year")
             ut = content.get("universityTransferable", False)
+            count = content.get("count")
             subj_str = "any subject" if subjects is None else ", ".join(subjects)
             year_str = f", year {year}" if year else ""
             ut_str = "UT " if ut else ""
-            print(f'{spaces}Completed courses in {ut_str}{subj_str}{year_str} ({score_str})')
+            count_str = f"{count} " if count is not None else ""
+            print(f'{spaces}{count_str}completed courses in {ut_str}{subj_str}{year_str} ({score_str})')
         else:
             print(f'{spaces}Unknown ContentScoreRequirement: {content} ({score_str})')
 

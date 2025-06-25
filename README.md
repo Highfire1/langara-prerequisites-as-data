@@ -2,6 +2,8 @@
 
 This is a project to parse course prerequisites from Langara College in text form to data.
 
+Check out the visualization here! [https://public.flourish.studio/story/3192938/](https://public.flourish.studio/story/3192938/)
+
 This has been completed, and you can find the parsed data in `data/converted.json`.
 
 Approximately 9% (51/564) of prerequisites could not be parsed due to:

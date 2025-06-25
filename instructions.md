@@ -83,7 +83,7 @@ Represents a required grade, standing, completion, credits, or completed courses
 
 ### OtherRequirement
 
-For requirements not covered by the schema (e.g., "departmental permission", "demonstrated competency", "equivalent").
+For requirements not covered by the schema (e.g., "departmental permission", "demonstrated competency").
 
 ```json
 {
@@ -765,6 +765,37 @@ You must **use ScoreExam with the MDT**
     "score": {
         "type": "ScoreExam",
         "minScore": 80
+    }
+}
+```
+
+### Example 13
+
+**Text:**  
+LET 3 with a strong recommendation of concurrent registration in ENGL 1121
+
+```json
+{
+    "prerequisites": {
+        "type": "PrerequisiteGroup",
+        "logic": "AND",
+        "children": [
+            {
+                "type": "ContentScoreRequirement",
+                "content": {
+                    "type": "ContentExam",
+                    "exam": "LET"
+                },
+                "score": {
+                    "type": "ScoreExam",
+                    "minScore": 3
+                }
+            },
+            {
+                "type": "OtherRequirement",
+                "note": "strong recommendation of concurrent registration in ENGL 1121"
+            }
+        ]
     }
 }
 ```

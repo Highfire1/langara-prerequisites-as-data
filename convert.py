@@ -14,7 +14,7 @@ from data.hard_cases import hard_cases
 OPENROUTER_API_KEY = os.getenv("OPENROUTER_API_KEY")
 INSTRUCTIONS_PATH = "instructions.md"
 OUTPUT_PATH = "data/converted.json"
-MODEL_1 = "google/gemini-2.5-flash-lite-preview-06-17"
+MODEL_1 = "google/gemini-2.5-pro"
 MODEL_2 = "mistralai/mistral-7b-instruct:free"
 MODEL = MODEL_1
 
@@ -94,7 +94,7 @@ def main():
     for text in prerequisites:
         
         # temporarily skip bad ones
-        if "MDT" in text or "LET" in text:
+        if "MDT" in text:# or "LET" in text:
             continue
         
         if text in hard_cases:
@@ -150,6 +150,8 @@ def main():
             print("Conversion finished.")
             if len(responses) >= 2 and responses[0] == responses[1]:
                 print("Both responses match!")
+            elif len(responses) == 1:
+                pass
             elif len(responses) == 0:
                 print("Failed to generate conversion.")
             else:

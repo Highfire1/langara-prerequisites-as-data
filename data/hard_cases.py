@@ -1,7 +1,11 @@
 hard_cases = [
-    'Prerequisite(s): A minimum "C" grade in EXPE 4800 or EXPE 4801, 4802, and 4803.',
+    
+    # missing information
     'Prerequisite(s): Successful completion of Term Two courses.',
-    'Prerequisite(s): Successful completion of Term One courses.',    
+    'Prerequisite(s): Successful completion of Term One courses.', 
+    
+    # ambiguous
+    'Prerequisite(s): A minimum "C" grade in EXPE 4800 or EXPE 4801, 4802, and 4803.',   
     
     # Year standing??? or is it course reqs?
     'Prerequisite(s): Completion of the third year of the Bachelor of Science in Bioinformatics; and a minimum "C-" grade in COOP 2501.',
@@ -122,26 +126,24 @@ hard_cases = [
     # what is "in the bba"
     'Prerequisite(s): Successful completion of a minimum of 90 credits in the BBA; a minimum "C" grade in CMNS 2228; a minimum "C" grade in six additional credits of university-transferable English or communications; and BUSM 3000, COOP 2301, or 2303.',
     
-    # confusing
-    'Prerequisite(s): Before registering in this course, a student should have completed a second-year college Chinese course or equivalent, e.g. completion of six years of elementary school or more in China or Taiwan, and know about 2000 Chinese characters.',
-    
     #ambiguous and/or
     'Prerequisite(s): Acceptance to the co-op option; an approved co-op work placement; and successful completion of COOP 3301 or COOP 3302 and 3303.',
+    
+    # confusing
+    'Prerequisite(s): Before registering in this course, a student should have completed a second-year college Chinese course or equivalent, e.g. completion of six years of elementary school or more in China or Taiwan, and know about 2000 Chinese characters.',
     
     # they added a comma
     'Prerequisite(s): Before registering in this course, a student should have completed a second-year college Chinese course or equivalent, e.g., completion of six years of elementary school or more in China or Taiwan, and know about 2000 Chinese characters.',
     
     'Prerequisite(s): Students who have not completed CHIN 3331 should consult an instructor of Chinese before registering in this course. Students should have already completed at least a  second-year college Chinese course or equivalent, e.g., completion of six years of elementary school or more in China or Taiwan,  and know about 2000 Chinese characters.',
     
-    # keeps erroring
+    # final year of BRM program
     'Prerequisite(s): Completion of a minimum of 90 credits including a minimum "C" grade in six credits of university-transferable English or communications; or permission of the department. Students must be in their final year of the BRM Program and have a minimum "C" grade in BUSM 4200. BUSM 4200 may be taken concurrently with RECR 4300.',
     
     # what does second year mean??
     'Prerequisite(s): Students must be in at least second year of the Bachelor of Business Administration, or be in second-year arts and sciences with departmental approval.',
     
-    #llm bad
-    # 'Prerequisite(s): A minimum "C+" grade in SPAN 1115 or 1118 (or equivalent) (may be taken after or concurrently with SPAN 1215, 1218, 2119, or 2219).',
-    
+    # idk how to represent this in data 
     'Prerequisite(s): Completion of a minimum of 54 credits including a minimum "C" grade in MARK 1115; and a minimum "C" grade in six credits of university-transferable English or communications. For students in the fourth term of the Diploma in Design Formation, a minimum "C" grade in DDSN 2152, MARK 1115, and six credits of university-transferable English or communications will be deemed to be equivalent to the above.',
     
     # what is a CDT??
@@ -149,4 +151,8 @@ hard_cases = [
     
     # who is taking this course???
     'Prerequisite(s): Speaker of English as a first language and a Langara English Test score of LETN 02 or by permission of the English department. If you have an LPI score of 22, please contact the English department chair for correct placement.',
+    
+    # we lost some prerequisite text
+    # so we cannot parse this
+    'Prerequisite(s): One of the following: LET 3 (or LPI equivalent); LEAP 8; a minimum "C+" grade in BC English 12, BC English Studies 12, BC Literary Studies 12, or BC English First Peoples 12; a minimum "C-" grade in three credits of university-transferable English or communications; or a minimum "C" grade in ENGL 1120; or an "S" grade in ENGL 1107, 1108, or 1110; and',
 ]

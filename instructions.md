@@ -800,6 +800,37 @@ LET 3 with a strong recommendation of concurrent registration in ENGL 1121
 }
 ```
 
+### Example 14
+
+**Text:**  
+Permission of the department based on the MDT process (MDT 085)
+
+```json
+{
+    "prerequisites": {
+        "type": "PrerequisiteGroup",
+        "logic": "AND",
+        "children": [
+            {
+                "type": "OtherRequirement",
+                "note": "permission of the department"
+            },
+            {
+                "type": "ContentScoreRequirement",
+                "content": {
+                    "type": "ContentExam",
+                    "exam": "MDT"
+                },
+                "score": {
+                    "type": "ScoreExam",
+                    "minScore": 85
+                }
+            }
+        ]
+    }
+}
+```
+
 ---
 
 **If you are unsure how to encode a requirement, use the `OtherRequirement` type and copy the relevant text into the `note`.**

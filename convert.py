@@ -94,8 +94,8 @@ def main():
     for text in prerequisites:
         
         # temporarily skip bad ones
-        if "MDT" in text:# or "LET" in text:
-            continue
+        # if "MDT" in text:# or "LET" in text:
+        #     continue
         
         if text in hard_cases:
             print(f"Skipping {text[17:37]}... because we can't handle it.")

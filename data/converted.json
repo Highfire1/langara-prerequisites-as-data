@@ -35375,5 +35375,2021 @@
         }
       ]
     }
+  },
+  "Prerequisite(s): One of the following: a score of Level 4 in Langara English Test (LET); an essay score of 30 or higher on the Language Proficiency Index (LPI) test; or a minimum \"C\" grade in one of following: ENGL 1123, 1127, 1128, 1129, or 1130; and a minimum \"C\" grade in one of the following: CRIM 1115, ECON 1119, 1220, 1221, HIST 1116, 1126, PHIL 1100, 1101, POLI 1100, 1119, PSYC 1115, 1215, SOCI 1120, or 1121. Students who do not meet the above prerequisite requirements, but have post-secondary, university-transferable credits or experience may apply to the chair of the Criminal Justice department for permission to take this course.": {
+    "prerequisites": {
+      "type": "PrerequisiteGroup",
+      "logic": "OR",
+      "children": [
+        {
+          "type": "PrerequisiteGroup",
+          "logic": "AND",
+          "children": [
+            {
+              "type": "PrerequisiteGroup",
+              "logic": "OR",
+              "children": [
+                {
+                  "type": "ContentScoreRequirement",
+                  "content": {
+                    "type": "ContentExam",
+                    "exam": "LET"
+                  },
+                  "score": {
+                    "type": "ScoreExam",
+                    "minScore": 4
+                  }
+                },
+                {
+                  "type": "PrerequisiteGroup",
+                  "logic": "OR",
+                  "children": [
+                    {
+                      "type": "ContentScoreRequirement",
+                      "content": {
+                        "type": "ContentCollegeCourse",
+                        "subject": "ENGL",
+                        "courseCode": "1123",
+                        "canBeTakenConcurrently": false
+                      },
+                      "score": {
+                        "type": "ScoreLetter",
+                        "minGrade": "C"
+                      }
+                    },
+                    {
+                      "type": "ContentScoreRequirement",
+                      "content": {
+                        "type": "ContentCollegeCourse",
+                        "subject": "ENGL",
+                        "courseCode": "1127",
+                        "canBeTakenConcurrently": false
+                      },
+                      "score": {
+                        "type": "ScoreLetter",
+                        "minGrade": "C"
+                      }
+                    },
+                    {
+                      "type": "ContentScoreRequirement",
+                      "content": {
+                        "type": "ContentCollegeCourse",
+                        "subject": "ENGL",
+                        "courseCode": "1128",
+                        "canBeTakenConcurrently": false
+                      },
+                      "score": {
+                        "type": "ScoreLetter",
+                        "minGrade": "C"
+                      }
+                    },
+                    {
+                      "type": "ContentScoreRequirement",
+                      "content": {
+                        "type": "ContentCollegeCourse",
+                        "subject": "ENGL",
+                        "courseCode": "1129",
+                        "canBeTakenConcurrently": false
+                      },
+                      "score": {
+                        "type": "ScoreLetter",
+                        "minGrade": "C"
+                      }
+                    },
+                    {
+                      "type": "ContentScoreRequirement",
+                      "content": {
+                        "type": "ContentCollegeCourse",
+                        "subject": "ENGL",
+                        "courseCode": "1130",
+                        "canBeTakenConcurrently": false
+                      },
+                      "score": {
+                        "type": "ScoreLetter",
+                        "minGrade": "C"
+                      }
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "PrerequisiteGroup",
+              "logic": "OR",
+              "children": [
+                {
+                  "type": "ContentScoreRequirement",
+                  "content": {
+                    "type": "ContentCollegeCourse",
+                    "subject": "CRIM",
+                    "courseCode": "1115",
+                    "canBeTakenConcurrently": false
+                  },
+                  "score": {
+                    "type": "ScoreLetter",
+                    "minGrade": "C"
+                  }
+                },
+                {
+                  "type": "ContentScoreRequirement",
+                  "content": {
+                    "type": "ContentCollegeCourse",
+                    "subject": "ECON",
+                    "courseCode": "1119",
+                    "canBeTakenConcurrently": false
+                  },
+                  "score": {
+                    "type": "ScoreLetter",
+                    "minGrade": "C"
+                  }
+                },
+                {
+                  "type": "ContentScoreRequirement",
+                  "content": {
+                    "type": "ContentCollegeCourse",
+                    "subject": "ECON",
+                    "courseCode": "1220",
+                    "canBeTakenConcurrently": false
+                  },
+                  "score": {
+                    "type": "ScoreLetter",
+                    "minGrade": "C"
+                  }
+                },
+                {
+                  "type": "ContentScoreRequirement",
+                  "content": {
+                    "type": "ContentCollegeCourse",
+                    "subject": "ECON",
+                    "courseCode": "1221",
+                    "canBeTakenConcurrently": false
+                  },
+                  "score": {
+                    "type": "ScoreLetter",
+                    "minGrade": "C"
+                  }
+                },
+                {
+                  "type": "ContentScoreRequirement",
+                  "content": {
+                    "type": "ContentCollegeCourse",
+                    "subject": "HIST",
+                    "courseCode": "1116",
+                    "canBeTakenConcurrently": false
+                  },
+                  "score": {
+                    "type": "ScoreLetter",
+                    "minGrade": "C"
+                  }
+                },
+                {
+                  "type": "ContentScoreRequirement",
+                  "content": {
+                    "type": "ContentCollegeCourse",
+                    "subject": "HIST",
+                    "courseCode": "1126",
+                    "canBeTakenConcurrently": false
+                  },
+                  "score": {
+                    "type": "ScoreLetter",
+                    "minGrade": "C"
+                  }
+                },
+                {
+                  "type": "ContentScoreRequirement",
+                  "content": {
+                    "type": "ContentCollegeCourse",
+                    "subject": "PHIL",
+                    "courseCode": "1100",
+                    "canBeTakenConcurrently": false
+                  },
+                  "score": {
+                    "type": "ScoreLetter",
+                    "minGrade": "C"
+                  }
+                },
+                {
+                  "type": "ContentScoreRequirement",
+                  "content": {
+                    "type": "ContentCollegeCourse",
+                    "subject": "PHIL",
+                    "courseCode": "1101",
+                    "canBeTakenConcurrently": false
+                  },
+                  "score": {
+                    "type": "ScoreLetter",
+                    "minGrade": "C"
+                  }
+                },
+                {
+                  "type": "ContentScoreRequirement",
+                  "content": {
+                    "type": "ContentCollegeCourse",
+                    "subject": "POLI",
+                    "courseCode": "1100",
+                    "canBeTakenConcurrently": false
+                  },
+                  "score": {
+                    "type": "ScoreLetter",
+                    "minGrade": "C"
+                  }
+                },
+                {
+                  "type": "ContentScoreRequirement",
+                  "content": {
+                    "type": "ContentCollegeCourse",
+                    "subject": "POLI",
+                    "courseCode": "1119",
+                    "canBeTakenConcurrently": false
+                  },
+                  "score": {
+                    "type": "ScoreLetter",
+                    "minGrade": "C"
+                  }
+                },
+                {
+                  "type": "ContentScoreRequirement",
+                  "content": {
+                    "type": "ContentCollegeCourse",
+                    "subject": "PSYC",
+                    "courseCode": "1115",
+                    "canBeTakenConcurrently": false
+                  },
+                  "score": {
+                    "type": "ScoreLetter",
+                    "minGrade": "C"
+                  }
+                },
+                {
+                  "type": "ContentScoreRequirement",
+                  "content": {
+                    "type": "ContentCollegeCourse",
+                    "subject": "PSYC",
+                    "courseCode": "1215",
+                    "canBeTakenConcurrently": false
+                  },
+                  "score": {
+                    "type": "ScoreLetter",
+                    "minGrade": "C"
+                  }
+                },
+                {
+                  "type": "ContentScoreRequirement",
+                  "content": {
+                    "type": "ContentCollegeCourse",
+                    "subject": "SOCI",
+                    "courseCode": "1120",
+                    "canBeTakenConcurrently": false
+                  },
+                  "score": {
+                    "type": "ScoreLetter",
+                    "minGrade": "C"
+                  }
+                },
+                {
+                  "type": "ContentScoreRequirement",
+                  "content": {
+                    "type": "ContentCollegeCourse",
+                    "subject": "SOCI",
+                    "courseCode": "1121",
+                    "canBeTakenConcurrently": false
+                  },
+                  "score": {
+                    "type": "ScoreLetter",
+                    "minGrade": "C"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "OtherRequirement",
+          "note": "Students who do not meet the above prerequisite requirements, but have post-secondary, university-transferable credits or experience may apply to the chair of the Criminal Justice department for permission to take this course."
+        }
+      ]
+    }
+  },
+  "Prerequisite(s): One of the following: LET 2 (or LPI equivalent); a minimum 50% in English First Peoples 12, English Studies 12, Literary Studies 12, or equivalent; or IELTS 6.5 or equivalent.": {
+    "prerequisites": {
+      "type": "PrerequisiteGroup",
+      "logic": "OR",
+      "children": [
+        {
+          "type": "ContentScoreRequirement",
+          "content": {
+            "type": "ContentExam",
+            "exam": "LET"
+          },
+          "score": {
+            "type": "ScoreExam",
+            "minScore": 2
+          }
+        },
+        {
+          "type": "PrerequisiteGroup",
+          "logic": "OR",
+          "children": [
+            {
+              "type": "ContentScoreRequirement",
+              "content": {
+                "type": "ContentOtherCourse",
+                "course": "English First Peoples 12"
+              },
+              "score": {
+                "type": "ScorePercentage",
+                "minPercent": 50
+              }
+            },
+            {
+              "type": "ContentScoreRequirement",
+              "content": {
+                "type": "ContentOtherCourse",
+                "course": "English Studies 12"
+              },
+              "score": {
+                "type": "ScorePercentage",
+                "minPercent": 50
+              }
+            },
+            {
+              "type": "ContentScoreRequirement",
+              "content": {
+                "type": "ContentOtherCourse",
+                "course": "Literary Studies 12"
+              },
+              "score": {
+                "type": "ScorePercentage",
+                "minPercent": 50
+              }
+            },
+            {
+              "type": "OtherRequirement",
+              "note": "a minimum 50% in equivalent"
+            }
+          ]
+        },
+        {
+          "type": "PrerequisiteGroup",
+          "logic": "OR",
+          "children": [
+            {
+              "type": "ContentScoreRequirement",
+              "content": {
+                "type": "ContentExam",
+                "exam": "IELTS"
+              },
+              "score": {
+                "type": "ScoreExam",
+                "minScore": 6.5
+              }
+            },
+            {
+              "type": "OtherRequirement",
+              "note": "equivalent"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "Prerequisite(s): One of the following: a score of Level 4 in Langara English Test (LET); an essay score of 30 or higher on the Language Proficiency Index (LPI) test; or a minimum \"C\" grade in one of the following: ENGL 1123, 1127, 1128, 1129, or 1130; and a minimum \"C\" grade in one of the following: CRIM 1115, 1116, 1125, or 1216. Students who do not meet the above prerequisite requirements but have post-secondary university-transferable credits or experience, may apply to the chair of the Criminal Justice department for permission to take this course.": {
+    "prerequisites": {
+      "type": "PrerequisiteGroup",
+      "logic": "OR",
+      "children": [
+        {
+          "type": "PrerequisiteGroup",
+          "logic": "AND",
+          "children": [
+            {
+              "type": "PrerequisiteGroup",
+              "logic": "OR",
+              "children": [
+                {
+                  "type": "ContentScoreRequirement",
+                  "content": {
+                    "type": "ContentExam",
+                    "exam": "LET"
+                  },
+                  "score": {
+                    "type": "ScoreExam",
+                    "minScore": 4
+                  }
+                },
+                {
+                  "type": "ContentScoreRequirement",
+                  "content": {
+                    "type": "ContentCollegeCourse",
+                    "subject": "ENGL",
+                    "courseCode": "1123",
+                    "canBeTakenConcurrently": false
+                  },
+                  "score": {
+                    "type": "ScoreLetter",
+                    "minGrade": "C"
+                  }
+                },
+                {
+                  "type": "ContentScoreRequirement",
+                  "content": {
+                    "type": "ContentCollegeCourse",
+                    "subject": "ENGL",
+                    "courseCode": "1127",
+                    "canBeTakenConcurrently": false
+                  },
+                  "score": {
+                    "type": "ScoreLetter",
+                    "minGrade": "C"
+                  }
+                },
+                {
+                  "type": "ContentScoreRequirement",
+                  "content": {
+                    "type": "ContentCollegeCourse",
+                    "subject": "ENGL",
+                    "courseCode": "1128",
+                    "canBeTakenConcurrently": false
+                  },
+                  "score": {
+                    "type": "ScoreLetter",
+                    "minGrade": "C"
+                  }
+                },
+                {
+                  "type": "ContentScoreRequirement",
+                  "content": {
+                    "type": "ContentCollegeCourse",
+                    "subject": "ENGL",
+                    "courseCode": "1129",
+                    "canBeTakenConcurrently": false
+                  },
+                  "score": {
+                    "type": "ScoreLetter",
+                    "minGrade": "C"
+                  }
+                },
+                {
+                  "type": "ContentScoreRequirement",
+                  "content": {
+                    "type": "ContentCollegeCourse",
+                    "subject": "ENGL",
+                    "courseCode": "1130",
+                    "canBeTakenConcurrently": false
+                  },
+                  "score": {
+                    "type": "ScoreLetter",
+                    "minGrade": "C"
+                  }
+                }
+              ]
+            },
+            {
+              "type": "PrerequisiteGroup",
+              "logic": "OR",
+              "children": [
+                {
+                  "type": "ContentScoreRequirement",
+                  "content": {
+                    "type": "ContentCollegeCourse",
+                    "subject": "CRIM",
+                    "courseCode": "1115",
+                    "canBeTakenConcurrently": false
+                  },
+                  "score": {
+                    "type": "ScoreLetter",
+                    "minGrade": "C"
+                  }
+                },
+                {
+                  "type": "ContentScoreRequirement",
+                  "content": {
+                    "type": "ContentCollegeCourse",
+                    "subject": "CRIM",
+                    "courseCode": "1116",
+                    "canBeTakenConcurrently": false
+                  },
+                  "score": {
+                    "type": "ScoreLetter",
+                    "minGrade": "C"
+                  }
+                },
+                {
+                  "type": "ContentScoreRequirement",
+                  "content": {
+                    "type": "ContentCollegeCourse",
+                    "subject": "CRIM",
+                    "courseCode": "1125",
+                    "canBeTakenConcurrently": false
+                  },
+                  "score": {
+                    "type": "ScoreLetter",
+                    "minGrade": "C"
+                  }
+                },
+                {
+                  "type": "ContentScoreRequirement",
+                  "content": {
+                    "type": "ContentCollegeCourse",
+                    "subject": "CRIM",
+                    "courseCode": "1216",
+                    "canBeTakenConcurrently": false
+                  },
+                  "score": {
+                    "type": "ScoreLetter",
+                    "minGrade": "C"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "OtherRequirement",
+          "note": "Students who do not meet the above prerequisite requirements but have post-secondary university-transferable credits or experience, may apply to the chair of the Criminal Justice department for permission to take this course."
+        }
+      ]
+    }
+  },
+  "Prerequisite(s): One of the following: a minimum 67% in English First Peoples 12, English Studies 12, Literary Studies 12, or equivalent; a university-level English or communications course for which Langara awards transfer credit; or a minimum \"C\" grade in ENGL 1120; or a minimum \"C-\" grade in ENGL 1121, or an \"S\" grade in one of ENGL 1107, 1108, or 1110. LET with a minimum Level 3; LEAP 8, LPI with a minimum 26 on the essay and one of 5 in English usage, 5 in sentence structure, or 10 in reading comprehension.": {
+    "prerequisites": {
+      "type": "PrerequisiteGroup",
+      "logic": "OR",
+      "children": [
+        {
+          "type": "PrerequisiteGroup",
+          "logic": "OR",
+          "children": [
+            {
+              "type": "ContentScoreRequirement",
+              "content": {
+                "type": "ContentOtherCourse",
+                "course": "English First Peoples 12"
+              },
+              "score": {
+                "type": "ScorePercentage",
+                "minPercent": 67
+              }
+            },
+            {
+              "type": "ContentScoreRequirement",
+              "content": {
+                "type": "ContentOtherCourse",
+                "course": "English Studies 12"
+              },
+              "score": {
+                "type": "ScorePercentage",
+                "minPercent": 67
+              }
+            },
+            {
+              "type": "ContentScoreRequirement",
+              "content": {
+                "type": "ContentOtherCourse",
+                "course": "Literary Studies 12"
+              },
+              "score": {
+                "type": "ScorePercentage",
+                "minPercent": 67
+              }
+            },
+            {
+              "type": "ContentScoreRequirement",
+              "content": {
+                "type": "EquivalentCourse"
+              },
+              "score": {
+                "type": "ScorePercentage",
+                "minPercent": 67
+              }
+            }
+          ]
+        },
+        {
+          "type": "ContentScoreRequirement",
+          "content": {
+            "type": "ContentCollegeCompletedCourses",
+            "subjects": [
+              "ENGL",
+              "CMNS"
+            ],
+            "count": 1,
+            "year": null,
+            "universityTransferable": true
+          },
+          "score": {
+            "type": "ScoreCompletion"
+          }
+        },
+        {
+          "type": "ContentScoreRequirement",
+          "content": {
+            "type": "ContentCollegeCourse",
+            "subject": "ENGL",
+            "courseCode": "1120",
+            "canBeTakenConcurrently": false
+          },
+          "score": {
+            "type": "ScoreLetter",
+            "minGrade": "C"
+          }
+        },
+        {
+          "type": "ContentScoreRequirement",
+          "content": {
+            "type": "ContentCollegeCourse",
+            "subject": "ENGL",
+            "courseCode": "1121",
+            "canBeTakenConcurrently": false
+          },
+          "score": {
+            "type": "ScoreLetter",
+            "minGrade": "C-"
+          }
+        },
+        {
+          "type": "PrerequisiteGroup",
+          "logic": "OR",
+          "children": [
+            {
+              "type": "ContentScoreRequirement",
+              "content": {
+                "type": "ContentCollegeCourse",
+                "subject": "ENGL",
+                "courseCode": "1107",
+                "canBeTakenConcurrently": false
+              },
+              "score": {
+                "type": "ScoreLiteral",
+                "score": "S"
+              }
+            },
+            {
+              "type": "ContentScoreRequirement",
+              "content": {
+                "type": "ContentCollegeCourse",
+                "subject": "ENGL",
+                "courseCode": "1108",
+                "canBeTakenConcurrently": false
+              },
+              "score": {
+                "type": "ScoreLiteral",
+                "score": "S"
+              }
+            },
+            {
+              "type": "ContentScoreRequirement",
+              "content": {
+                "type": "ContentCollegeCourse",
+                "subject": "ENGL",
+                "courseCode": "1110",
+                "canBeTakenConcurrently": false
+              },
+              "score": {
+                "type": "ScoreLiteral",
+                "score": "S"
+              }
+            }
+          ]
+        },
+        {
+          "type": "ContentScoreRequirement",
+          "content": {
+            "type": "ContentExam",
+            "exam": "LET"
+          },
+          "score": {
+            "type": "ScoreExam",
+            "minScore": 3
+          }
+        },
+        {
+          "type": "ContentScoreRequirement",
+          "content": {
+            "type": "ContentExam",
+            "exam": "LEAP"
+          },
+          "score": {
+            "type": "ScoreExam",
+            "minScore": 8
+          }
+        }
+      ]
+    }
+  },
+  "Prerequisite(s): LET 2 or IELTS 6.5 (or equivalent).": {
+    "prerequisites": {
+      "type": "PrerequisiteGroup",
+      "logic": "OR",
+      "children": [
+        {
+          "type": "ContentScoreRequirement",
+          "content": {
+            "type": "ContentExam",
+            "exam": "LET"
+          },
+          "score": {
+            "type": "ScoreExam",
+            "minScore": 2
+          }
+        },
+        {
+          "type": "PrerequisiteGroup",
+          "logic": "OR",
+          "children": [
+            {
+              "type": "ContentScoreRequirement",
+              "content": {
+                "type": "ContentExam",
+                "exam": "IELTS"
+              },
+              "score": {
+                "type": "ScoreExam",
+                "minScore": 6.5
+              }
+            },
+            {
+              "type": "OtherRequirement",
+              "note": "equivalent"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "Prerequisite(s): A minimum \"C\" grade in FMGT 1115 and FMGT 1215, or FMGT 2293; English Requirement, one of the following: a minimum 67% in English First Peoples 12, English Studies 12, Literary Studies 12, or equivalent; a university-level English or communications course for which Langara awards transfer credit; a minimum \"C\" in ENGL 1120; a minimum \"C-\" in ENGL 1121; a \"S\" in one of ENGL 1107, 1108, or 1110; a minimum Level 3 on the LET; LEAP 8; LPI with a minimum 26 on the essay and one of 5 in English usage, 5 in sentence structure, or 10 in reading comprehension.": {
+    "prerequisites": {
+      "type": "PrerequisiteGroup",
+      "logic": "AND",
+      "children": [
+        {
+          "type": "PrerequisiteGroup",
+          "logic": "OR",
+          "children": [
+            {
+              "type": "PrerequisiteGroup",
+              "logic": "AND",
+              "children": [
+                {
+                  "type": "ContentScoreRequirement",
+                  "content": {
+                    "type": "ContentCollegeCourse",
+                    "subject": "FMGT",
+                    "courseCode": "1115",
+                    "canBeTakenConcurrently": false
+                  },
+                  "score": {
+                    "type": "ScoreLetter",
+                    "minGrade": "C"
+                  }
+                },
+                {
+                  "type": "ContentScoreRequirement",
+                  "content": {
+                    "type": "ContentCollegeCourse",
+                    "subject": "FMGT",
+                    "courseCode": "1215",
+                    "canBeTakenConcurrently": false
+                  },
+                  "score": {
+                    "type": "ScoreLetter",
+                    "minGrade": "C"
+                  }
+                }
+              ]
+            },
+            {
+              "type": "ContentScoreRequirement",
+              "content": {
+                "type": "ContentCollegeCourse",
+                "subject": "FMGT",
+                "courseCode": "2293",
+                "canBeTakenConcurrently": false
+              },
+              "score": {
+                "type": "ScoreLetter",
+                "minGrade": "C"
+              }
+            }
+          ]
+        },
+        {
+          "type": "PrerequisiteGroup",
+          "logic": "OR",
+          "children": [
+            {
+              "type": "PrerequisiteGroup",
+              "logic": "OR",
+              "children": [
+                {
+                  "type": "ContentScoreRequirement",
+                  "content": {
+                    "type": "ContentOtherCourse",
+                    "course": "English First Peoples 12"
+                  },
+                  "score": {
+                    "type": "ScorePercentage",
+                    "minPercent": 67
+                  }
+                },
+                {
+                  "type": "ContentScoreRequirement",
+                  "content": {
+                    "type": "ContentOtherCourse",
+                    "course": "English Studies 12"
+                  },
+                  "score": {
+                    "type": "ScorePercentage",
+                    "minPercent": 67
+                  }
+                },
+                {
+                  "type": "ContentScoreRequirement",
+                  "content": {
+                    "type": "ContentOtherCourse",
+                    "course": "Literary Studies 12"
+                  },
+                  "score": {
+                    "type": "ScorePercentage",
+                    "minPercent": 67
+                  }
+                },
+                {
+                  "type": "OtherRequirement",
+                  "note": "equivalent"
+                }
+              ]
+            },
+            {
+              "type": "ContentScoreRequirement",
+              "content": {
+                "type": "ContentCollegeCompletedCourses",
+                "subjects": [
+                  "ENGL",
+                  "CMNS"
+                ],
+                "count": 1,
+                "year": null,
+                "universityTransferable": true
+              },
+              "score": {
+                "type": "ScoreCompletion"
+              }
+            },
+            {
+              "type": "ContentScoreRequirement",
+              "content": {
+                "type": "ContentCollegeCourse",
+                "subject": "ENGL",
+                "courseCode": "1120",
+                "canBeTakenConcurrently": false
+              },
+              "score": {
+                "type": "ScoreLetter",
+                "minGrade": "C"
+              }
+            },
+            {
+              "type": "ContentScoreRequirement",
+              "content": {
+                "type": "ContentCollegeCourse",
+                "subject": "ENGL",
+                "courseCode": "1121",
+                "canBeTakenConcurrently": false
+              },
+              "score": {
+                "type": "ScoreLetter",
+                "minGrade": "C-"
+              }
+            },
+            {
+              "type": "PrerequisiteGroup",
+              "logic": "OR",
+              "children": [
+                {
+                  "type": "ContentScoreRequirement",
+                  "content": {
+                    "type": "ContentCollegeCourse",
+                    "subject": "ENGL",
+                    "courseCode": "1107",
+                    "canBeTakenConcurrently": false
+                  },
+                  "score": {
+                    "type": "ScoreLiteral",
+                    "score": "S"
+                  }
+                },
+                {
+                  "type": "ContentScoreRequirement",
+                  "content": {
+                    "type": "ContentCollegeCourse",
+                    "subject": "ENGL",
+                    "courseCode": "1108",
+                    "canBeTakenConcurrently": false
+                  },
+                  "score": {
+                    "type": "ScoreLiteral",
+                    "score": "S"
+                  }
+                },
+                {
+                  "type": "ContentScoreRequirement",
+                  "content": {
+                    "type": "ContentCollegeCourse",
+                    "subject": "ENGL",
+                    "courseCode": "1110",
+                    "canBeTakenConcurrently": false
+                  },
+                  "score": {
+                    "type": "ScoreLiteral",
+                    "score": "S"
+                  }
+                }
+              ]
+            },
+            {
+              "type": "ContentScoreRequirement",
+              "content": {
+                "type": "ContentExam",
+                "exam": "LET"
+              },
+              "score": {
+                "type": "ScoreExam",
+                "minScore": 3
+              }
+            },
+            {
+              "type": "ContentScoreRequirement",
+              "content": {
+                "type": "ContentExam",
+                "exam": "LEAP"
+              },
+              "score": {
+                "type": "ScoreExam",
+                "minScore": 8
+              }
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "Prerequisite(s): One of the following: LET 3 (or LPI equivalent); a minimum \"C+\" grade in English First Peoples 12, English Studies 12, or Literary Studies 12; a minimum \"C\" grade in one of the following: CMNS 1118, ENGL 1120, 1123, 1127, or 1128; or an \"S\" grade in ENGL 1107, 1108, or 1110. It is recommended that students complete SSRV 2000, Introduction to Social Welfare in Canada.": {
+    "prerequisites": {
+      "type": "PrerequisiteGroup",
+      "logic": "OR",
+      "children": [
+        {
+          "type": "ContentScoreRequirement",
+          "content": {
+            "type": "ContentExam",
+            "exam": "LET"
+          },
+          "score": {
+            "type": "ScoreExam",
+            "minScore": 3
+          }
+        },
+        {
+          "type": "PrerequisiteGroup",
+          "logic": "OR",
+          "children": [
+            {
+              "type": "ContentScoreRequirement",
+              "content": {
+                "type": "ContentOtherCourse",
+                "course": "English First Peoples 12"
+              },
+              "score": {
+                "type": "ScoreLetter",
+                "minGrade": "C+"
+              }
+            },
+            {
+              "type": "ContentScoreRequirement",
+              "content": {
+                "type": "ContentOtherCourse",
+                "course": "English Studies 12"
+              },
+              "score": {
+                "type": "ScoreLetter",
+                "minGrade": "C+"
+              }
+            },
+            {
+              "type": "ContentScoreRequirement",
+              "content": {
+                "type": "ContentOtherCourse",
+                "course": "Literary Studies 12"
+              },
+              "score": {
+                "type": "ScoreLetter",
+                "minGrade": "C+"
+              }
+            }
+          ]
+        },
+        {
+          "type": "PrerequisiteGroup",
+          "logic": "OR",
+          "children": [
+            {
+              "type": "ContentScoreRequirement",
+              "content": {
+                "type": "ContentCollegeCourse",
+                "subject": "CMNS",
+                "courseCode": "1118",
+                "canBeTakenConcurrently": false
+              },
+              "score": {
+                "type": "ScoreLetter",
+                "minGrade": "C"
+              }
+            },
+            {
+              "type": "ContentScoreRequirement",
+              "content": {
+                "type": "ContentCollegeCourse",
+                "subject": "ENGL",
+                "courseCode": "1120",
+                "canBeTakenConcurrently": false
+              },
+              "score": {
+                "type": "ScoreLetter",
+                "minGrade": "C"
+              }
+            },
+            {
+              "type": "ContentScoreRequirement",
+              "content": {
+                "type": "ContentCollegeCourse",
+                "subject": "ENGL",
+                "courseCode": "1123",
+                "canBeTakenConcurrently": false
+              },
+              "score": {
+                "type": "ScoreLetter",
+                "minGrade": "C"
+              }
+            },
+            {
+              "type": "ContentScoreRequirement",
+              "content": {
+                "type": "ContentCollegeCourse",
+                "subject": "ENGL",
+                "courseCode": "1127",
+                "canBeTakenConcurrently": false
+              },
+              "score": {
+                "type": "ScoreLetter",
+                "minGrade": "C"
+              }
+            },
+            {
+              "type": "ContentScoreRequirement",
+              "content": {
+                "type": "ContentCollegeCourse",
+                "subject": "ENGL",
+                "courseCode": "1128",
+                "canBeTakenConcurrently": false
+              },
+              "score": {
+                "type": "ScoreLetter",
+                "minGrade": "C"
+              }
+            }
+          ]
+        },
+        {
+          "type": "PrerequisiteGroup",
+          "logic": "OR",
+          "children": [
+            {
+              "type": "ContentScoreRequirement",
+              "content": {
+                "type": "ContentCollegeCourse",
+                "subject": "ENGL",
+                "courseCode": "1107",
+                "canBeTakenConcurrently": false
+              },
+              "score": {
+                "type": "ScoreLiteral",
+                "score": "S"
+              }
+            },
+            {
+              "type": "ContentScoreRequirement",
+              "content": {
+                "type": "ContentCollegeCourse",
+                "subject": "ENGL",
+                "courseCode": "1108",
+                "canBeTakenConcurrently": false
+              },
+              "score": {
+                "type": "ScoreLiteral",
+                "score": "S"
+              }
+            },
+            {
+              "type": "ContentScoreRequirement",
+              "content": {
+                "type": "ContentCollegeCourse",
+                "subject": "ENGL",
+                "courseCode": "1110",
+                "canBeTakenConcurrently": false
+              },
+              "score": {
+                "type": "ScoreLiteral",
+                "score": "S"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "Prerequisite(s): One of the following: a minimum \"C-\" grade in Precalculus 12, an \"S\" grade in MATH 1150, or permission of the department based on the MDT process (MDT 070). Prerequisites are valid for only three years.": {
+    "prerequisites": {
+      "type": "PrerequisiteGroup",
+      "logic": "OR",
+      "children": [
+        {
+          "type": "ContentScoreRequirement",
+          "content": {
+            "type": "ContentOtherCourse",
+            "course": "Precalculus 12"
+          },
+          "score": {
+            "type": "ScoreLetter",
+            "minGrade": "C-"
+          }
+        },
+        {
+          "type": "ContentScoreRequirement",
+          "content": {
+            "type": "ContentCollegeCourse",
+            "subject": "MATH",
+            "courseCode": "1150",
+            "canBeTakenConcurrently": false
+          },
+          "score": {
+            "type": "ScoreLiteral",
+            "score": "S"
+          }
+        },
+        {
+          "type": "ContentScoreRequirement",
+          "content": {
+            "type": "ContentExam",
+            "exam": "MDT"
+          },
+          "score": {
+            "type": "ScoreExam",
+            "minScore": 70
+          }
+        }
+      ]
+    }
+  },
+  "Prerequisite(s): One of the following: a minimum \"B\" grade in Precalculus 12; permission of the department based on the MDT process (MDT 085); a minimum \"C\" grade in MATH 1170; or a minimum \"C+\" grade in Precalculus 12 and a minimum \"C-\" grade in Calculus 12. Prerequisites are valid for only three years.": {
+    "prerequisites": {
+      "type": "PrerequisiteGroup",
+      "logic": "OR",
+      "children": [
+        {
+          "type": "ContentScoreRequirement",
+          "content": {
+            "type": "ContentOtherCourse",
+            "course": "Precalculus 12"
+          },
+          "score": {
+            "type": "ScoreLetter",
+            "minGrade": "B"
+          }
+        },
+        {
+          "type": "PrerequisiteGroup",
+          "logic": "AND",
+          "children": [
+            {
+              "type": "OtherRequirement",
+              "note": "permission of the department"
+            },
+            {
+              "type": "ContentScoreRequirement",
+              "content": {
+                "type": "ContentExam",
+                "exam": "MDT"
+              },
+              "score": {
+                "type": "ScoreExam",
+                "minScore": 85
+              }
+            }
+          ]
+        },
+        {
+          "type": "ContentScoreRequirement",
+          "content": {
+            "type": "ContentCollegeCourse",
+            "subject": "MATH",
+            "courseCode": "1170",
+            "canBeTakenConcurrently": false
+          },
+          "score": {
+            "type": "ScoreLetter",
+            "minGrade": "C"
+          }
+        },
+        {
+          "type": "PrerequisiteGroup",
+          "logic": "AND",
+          "children": [
+            {
+              "type": "ContentScoreRequirement",
+              "content": {
+                "type": "ContentOtherCourse",
+                "course": "Precalculus 12"
+              },
+              "score": {
+                "type": "ScoreLetter",
+                "minGrade": "C+"
+              }
+            },
+            {
+              "type": "ContentScoreRequirement",
+              "content": {
+                "type": "ContentOtherCourse",
+                "course": "Calculus 12"
+              },
+              "score": {
+                "type": "ScoreLetter",
+                "minGrade": "C-"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "Prerequisite(s): A minimum \"A\" grade in Precalculus 12; permission of department based on the MDT process (MDT 95); or a minimum \"B-\" grade in MATH 1170; or a minimum \"C+\" grade in Precalculus 12 and a minimum \"C-\" grade in Calculus 12. Prerequisites are valid for only three years.": {
+    "prerequisites": {
+      "type": "PrerequisiteGroup",
+      "logic": "OR",
+      "children": [
+        {
+          "type": "ContentScoreRequirement",
+          "content": {
+            "type": "ContentOtherCourse",
+            "course": "Precalculus 12"
+          },
+          "score": {
+            "type": "ScoreLetter",
+            "minGrade": "A"
+          }
+        },
+        {
+          "type": "PrerequisiteGroup",
+          "logic": "AND",
+          "children": [
+            {
+              "type": "OtherRequirement",
+              "note": "permission of the department"
+            },
+            {
+              "type": "ContentScoreRequirement",
+              "content": {
+                "type": "ContentExam",
+                "exam": "MDT"
+              },
+              "score": {
+                "type": "ScoreExam",
+                "minScore": 95
+              }
+            }
+          ]
+        },
+        {
+          "type": "ContentScoreRequirement",
+          "content": {
+            "type": "ContentCollegeCourse",
+            "subject": "MATH",
+            "courseCode": "1170",
+            "canBeTakenConcurrently": false
+          },
+          "score": {
+            "type": "ScoreLetter",
+            "minGrade": "B-"
+          }
+        },
+        {
+          "type": "PrerequisiteGroup",
+          "logic": "AND",
+          "children": [
+            {
+              "type": "ContentScoreRequirement",
+              "content": {
+                "type": "ContentOtherCourse",
+                "course": "Precalculus 12"
+              },
+              "score": {
+                "type": "ScoreLetter",
+                "minGrade": "C+"
+              }
+            },
+            {
+              "type": "ContentScoreRequirement",
+              "content": {
+                "type": "ContentOtherCourse",
+                "course": "Calculus 12"
+              },
+              "score": {
+                "type": "ScoreLetter",
+                "minGrade": "C-"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "Prerequisite(s): One of the following: a minimum \"C\" grade in Precalculus 11 or Foundations of Mathematics 12, an \"S\" grade in MATH 1150, a minimum \"C-\" grade in Precalculus 12, or permission of the department based on the MDT process (MDT 065). Prerequisites are valid for only three years.": {
+    "prerequisites": {
+      "type": "PrerequisiteGroup",
+      "logic": "OR",
+      "children": [
+        {
+          "type": "PrerequisiteGroup",
+          "logic": "OR",
+          "children": [
+            {
+              "type": "ContentScoreRequirement",
+              "content": {
+                "type": "ContentOtherCourse",
+                "course": "Precalculus 11"
+              },
+              "score": {
+                "type": "ScoreLetter",
+                "minGrade": "C"
+              }
+            },
+            {
+              "type": "ContentScoreRequirement",
+              "content": {
+                "type": "ContentOtherCourse",
+                "course": "Foundations of Mathematics 12"
+              },
+              "score": {
+                "type": "ScoreLetter",
+                "minGrade": "C"
+              }
+            }
+          ]
+        },
+        {
+          "type": "ContentScoreRequirement",
+          "content": {
+            "type": "ContentCollegeCourse",
+            "subject": "MATH",
+            "courseCode": "1150",
+            "canBeTakenConcurrently": false
+          },
+          "score": {
+            "type": "ScoreLiteral",
+            "score": "S"
+          }
+        },
+        {
+          "type": "ContentScoreRequirement",
+          "content": {
+            "type": "ContentOtherCourse",
+            "course": "Precalculus 12"
+          },
+          "score": {
+            "type": "ScoreLetter",
+            "minGrade": "C-"
+          }
+        },
+        {
+          "type": "PrerequisiteGroup",
+          "logic": "AND",
+          "children": [
+            {
+              "type": "OtherRequirement",
+              "note": "permission of the department"
+            },
+            {
+              "type": "ContentScoreRequirement",
+              "content": {
+                "type": "ContentExam",
+                "exam": "MDT"
+              },
+              "score": {
+                "type": "ScoreExam",
+                "minScore": 65
+              }
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "Prerequisite(s): A minimum \"C\" grade in CPSC 1150 or 1155; and one of the following: a minimum \"B\" grade in Precalculus 12; a minimum \"C\" grade in MATH 1170, 1171, 1173, or 1174; a minimum \"C+\" grade in Precalculus 12 and a minimum \"C-\" grade in Calculus 12; or MDT 85. Prerequisites are valid for only three years.": {
+    "prerequisites": {
+      "type": "PrerequisiteGroup",
+      "logic": "AND",
+      "children": [
+        {
+          "type": "PrerequisiteGroup",
+          "logic": "OR",
+          "children": [
+            {
+              "type": "ContentScoreRequirement",
+              "content": {
+                "type": "ContentCollegeCourse",
+                "subject": "CPSC",
+                "courseCode": "1150",
+                "canBeTakenConcurrently": false
+              },
+              "score": {
+                "type": "ScoreLetter",
+                "minGrade": "C"
+              }
+            },
+            {
+              "type": "ContentScoreRequirement",
+              "content": {
+                "type": "ContentCollegeCourse",
+                "subject": "CPSC",
+                "courseCode": "1155",
+                "canBeTakenConcurrently": false
+              },
+              "score": {
+                "type": "ScoreLetter",
+                "minGrade": "C"
+              }
+            }
+          ]
+        },
+        {
+          "type": "PrerequisiteGroup",
+          "logic": "OR",
+          "children": [
+            {
+              "type": "ContentScoreRequirement",
+              "content": {
+                "type": "ContentOtherCourse",
+                "course": "Precalculus 12"
+              },
+              "score": {
+                "type": "ScoreLetter",
+                "minGrade": "B"
+              }
+            },
+            {
+              "type": "PrerequisiteGroup",
+              "logic": "OR",
+              "children": [
+                {
+                  "type": "ContentScoreRequirement",
+                  "content": {
+                    "type": "ContentCollegeCourse",
+                    "subject": "MATH",
+                    "courseCode": "1170",
+                    "canBeTakenConcurrently": false
+                  },
+                  "score": {
+                    "type": "ScoreLetter",
+                    "minGrade": "C"
+                  }
+                },
+                {
+                  "type": "ContentScoreRequirement",
+                  "content": {
+                    "type": "ContentCollegeCourse",
+                    "subject": "MATH",
+                    "courseCode": "1171",
+                    "canBeTakenConcurrently": false
+                  },
+                  "score": {
+                    "type": "ScoreLetter",
+                    "minGrade": "C"
+                  }
+                },
+                {
+                  "type": "ContentScoreRequirement",
+                  "content": {
+                    "type": "ContentCollegeCourse",
+                    "subject": "MATH",
+                    "courseCode": "1173",
+                    "canBeTakenConcurrently": false
+                  },
+                  "score": {
+                    "type": "ScoreLetter",
+                    "minGrade": "C"
+                  }
+                },
+                {
+                  "type": "ContentScoreRequirement",
+                  "content": {
+                    "type": "ContentCollegeCourse",
+                    "subject": "MATH",
+                    "courseCode": "1174",
+                    "canBeTakenConcurrently": false
+                  },
+                  "score": {
+                    "type": "ScoreLetter",
+                    "minGrade": "C"
+                  }
+                }
+              ]
+            },
+            {
+              "type": "PrerequisiteGroup",
+              "logic": "AND",
+              "children": [
+                {
+                  "type": "ContentScoreRequirement",
+                  "content": {
+                    "type": "ContentOtherCourse",
+                    "course": "Precalculus 12"
+                  },
+                  "score": {
+                    "type": "ScoreLetter",
+                    "minGrade": "C+"
+                  }
+                },
+                {
+                  "type": "ContentScoreRequirement",
+                  "content": {
+                    "type": "ContentOtherCourse",
+                    "course": "Calculus 12"
+                  },
+                  "score": {
+                    "type": "ScoreLetter",
+                    "minGrade": "C-"
+                  }
+                }
+              ]
+            },
+            {
+              "type": "ContentScoreRequirement",
+              "content": {
+                "type": "ContentExam",
+                "exam": "MDT"
+              },
+              "score": {
+                "type": "ScoreExam",
+                "minScore": 85
+              }
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "Prerequisite(s): A minimum \"C\" grade in Precalculus 11 or MATH 1150; or MDT 70; or one of the following: MATH 1152, 1153, 1170, 1171, or 1173.": {
+    "prerequisites": {
+      "type": "PrerequisiteGroup",
+      "logic": "OR",
+      "children": [
+        {
+          "type": "PrerequisiteGroup",
+          "logic": "OR",
+          "children": [
+            {
+              "type": "ContentScoreRequirement",
+              "content": {
+                "type": "ContentOtherCourse",
+                "course": "Precalculus 11"
+              },
+              "score": {
+                "type": "ScoreLetter",
+                "minGrade": "C"
+              }
+            },
+            {
+              "type": "ContentScoreRequirement",
+              "content": {
+                "type": "ContentCollegeCourse",
+                "subject": "MATH",
+                "courseCode": "1150",
+                "canBeTakenConcurrently": false
+              },
+              "score": {
+                "type": "ScoreLetter",
+                "minGrade": "C"
+              }
+            }
+          ]
+        },
+        {
+          "type": "ContentScoreRequirement",
+          "content": {
+            "type": "ContentExam",
+            "exam": "MDT"
+          },
+          "score": {
+            "type": "ScoreExam",
+            "minScore": 70
+          }
+        },
+        {
+          "type": "PrerequisiteGroup",
+          "logic": "OR",
+          "children": [
+            {
+              "type": "ContentScoreRequirement",
+              "content": {
+                "type": "ContentCollegeCourse",
+                "subject": "MATH",
+                "courseCode": "1152",
+                "canBeTakenConcurrently": false
+              },
+              "score": {
+                "type": "ScoreCompletion"
+              }
+            },
+            {
+              "type": "ContentScoreRequirement",
+              "content": {
+                "type": "ContentCollegeCourse",
+                "subject": "MATH",
+                "courseCode": "1153",
+                "canBeTakenConcurrently": false
+              },
+              "score": {
+                "type": "ScoreCompletion"
+              }
+            },
+            {
+              "type": "ContentScoreRequirement",
+              "content": {
+                "type": "ContentCollegeCourse",
+                "subject": "MATH",
+                "courseCode": "1170",
+                "canBeTakenConcurrently": false
+              },
+              "score": {
+                "type": "ScoreCompletion"
+              }
+            },
+            {
+              "type": "ContentScoreRequirement",
+              "content": {
+                "type": "ContentCollegeCourse",
+                "subject": "MATH",
+                "courseCode": "1171",
+                "canBeTakenConcurrently": false
+              },
+              "score": {
+                "type": "ScoreCompletion"
+              }
+            },
+            {
+              "type": "ContentScoreRequirement",
+              "content": {
+                "type": "ContentCollegeCourse",
+                "subject": "MATH",
+                "courseCode": "1173",
+                "canBeTakenConcurrently": false
+              },
+              "score": {
+                "type": "ScoreCompletion"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "Prerequisite(s): A minimum \"C+\" grade in Precalculus 12; permission of the department based on the MDT process (MDT 075); or a minimum \"C-\" grade in MATH 1152. Prerequisites are valid for only three years.": {
+    "prerequisites": {
+      "type": "PrerequisiteGroup",
+      "logic": "OR",
+      "children": [
+        {
+          "type": "ContentScoreRequirement",
+          "content": {
+            "type": "ContentOtherCourse",
+            "course": "Precalculus 12"
+          },
+          "score": {
+            "type": "ScoreLetter",
+            "minGrade": "C+"
+          }
+        },
+        {
+          "type": "PrerequisiteGroup",
+          "logic": "AND",
+          "children": [
+            {
+              "type": "OtherRequirement",
+              "note": "permission of the department"
+            },
+            {
+              "type": "ContentScoreRequirement",
+              "content": {
+                "type": "ContentExam",
+                "exam": "MDT"
+              },
+              "score": {
+                "type": "ScoreExam",
+                "minScore": 75
+              }
+            }
+          ]
+        },
+        {
+          "type": "ContentScoreRequirement",
+          "content": {
+            "type": "ContentCollegeCourse",
+            "subject": "MATH",
+            "courseCode": "1152",
+            "canBeTakenConcurrently": false
+          },
+          "score": {
+            "type": "ScoreLetter",
+            "minGrade": "C-"
+          }
+        }
+      ]
+    }
+  },
+  "Prerequisite(s): One of the following: a minimum \"C\" grade in Foundations of Mathematics 11, Pre-calculus 11, Foundations of Mathematics 12, or Pre-calculus 12; or a minimum \"C-\" grade in MATH 1150; or MDT 053.": {
+    "prerequisites": {
+      "type": "PrerequisiteGroup",
+      "logic": "OR",
+      "children": [
+        {
+          "type": "PrerequisiteGroup",
+          "logic": "OR",
+          "children": [
+            {
+              "type": "ContentScoreRequirement",
+              "content": {
+                "type": "ContentOtherCourse",
+                "course": "Foundations of Mathematics 11"
+              },
+              "score": {
+                "type": "ScoreLetter",
+                "minGrade": "C"
+              }
+            },
+            {
+              "type": "ContentScoreRequirement",
+              "content": {
+                "type": "ContentOtherCourse",
+                "course": "Pre-calculus 11"
+              },
+              "score": {
+                "type": "ScoreLetter",
+                "minGrade": "C"
+              }
+            },
+            {
+              "type": "ContentScoreRequirement",
+              "content": {
+                "type": "ContentOtherCourse",
+                "course": "Foundations of Mathematics 12"
+              },
+              "score": {
+                "type": "ScoreLetter",
+                "minGrade": "C"
+              }
+            },
+            {
+              "type": "ContentScoreRequirement",
+              "content": {
+                "type": "ContentOtherCourse",
+                "course": "Pre-calculus 12"
+              },
+              "score": {
+                "type": "ScoreLetter",
+                "minGrade": "C"
+              }
+            }
+          ]
+        },
+        {
+          "type": "ContentScoreRequirement",
+          "content": {
+            "type": "ContentCollegeCourse",
+            "subject": "MATH",
+            "courseCode": "1150",
+            "canBeTakenConcurrently": false
+          },
+          "score": {
+            "type": "ScoreLetter",
+            "minGrade": "C-"
+          }
+        },
+        {
+          "type": "ContentScoreRequirement",
+          "content": {
+            "type": "ContentExam",
+            "exam": "MDT"
+          },
+          "score": {
+            "type": "ScoreExam",
+            "minScore": 53
+          }
+        }
+      ]
+    }
+  },
+  "Prerequisite(s): A minimum \"C\" grade in Precalculus 11, an \"S\" grade in MATH 1150, or MDT 70 or higher.": {
+    "prerequisites": {
+      "type": "PrerequisiteGroup",
+      "logic": "OR",
+      "children": [
+        {
+          "type": "ContentScoreRequirement",
+          "content": {
+            "type": "ContentOtherCourse",
+            "course": "Precalculus 11"
+          },
+          "score": {
+            "type": "ScoreLetter",
+            "minGrade": "C"
+          }
+        },
+        {
+          "type": "ContentScoreRequirement",
+          "content": {
+            "type": "ContentCollegeCourse",
+            "subject": "MATH",
+            "courseCode": "1150",
+            "canBeTakenConcurrently": false
+          },
+          "score": {
+            "type": "ScoreLiteral",
+            "score": "S"
+          }
+        },
+        {
+          "type": "ContentScoreRequirement",
+          "content": {
+            "type": "ContentExam",
+            "exam": "MDT"
+          },
+          "score": {
+            "type": "ScoreExam",
+            "minScore": 70
+          }
+        }
+      ]
+    }
+  },
+  "Prerequisite(s): One of the following: a minimum \"C\" grade in Precalculus 11 or Foundations of Mathematics 12; an \"S\" grade in MATH 1101; or permission of the department based on the MDT process (MDT 059). Prerequisites are valid for only three years.": {
+    "prerequisites": {
+      "type": "PrerequisiteGroup",
+      "logic": "OR",
+      "children": [
+        {
+          "type": "PrerequisiteGroup",
+          "logic": "OR",
+          "children": [
+            {
+              "type": "ContentScoreRequirement",
+              "content": {
+                "type": "ContentOtherCourse",
+                "course": "Precalculus 11"
+              },
+              "score": {
+                "type": "ScoreLetter",
+                "minGrade": "C"
+              }
+            },
+            {
+              "type": "ContentScoreRequirement",
+              "content": {
+                "type": "ContentOtherCourse",
+                "course": "Foundations of Mathematics 12"
+              },
+              "score": {
+                "type": "ScoreLetter",
+                "minGrade": "C"
+              }
+            }
+          ]
+        },
+        {
+          "type": "ContentScoreRequirement",
+          "content": {
+            "type": "ContentCollegeCourse",
+            "subject": "MATH",
+            "courseCode": "1101",
+            "canBeTakenConcurrently": false
+          },
+          "score": {
+            "type": "ScoreLiteral",
+            "score": "S"
+          }
+        },
+        {
+          "type": "PrerequisiteGroup",
+          "logic": "AND",
+          "children": [
+            {
+              "type": "OtherRequirement",
+              "note": "permission of the department"
+            },
+            {
+              "type": "ContentScoreRequirement",
+              "content": {
+                "type": "ContentExam",
+                "exam": "MDT"
+              },
+              "score": {
+                "type": "ScoreExam",
+                "minScore": 59
+              }
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "Prerequisite(s): One of the following: a minimum \"C\" grade in Precalculus 11 or Foundations of Mathematics 12; a minimum \"C-\" grade in Precalculus 12; an \"S\" grade in MATH 1101; or permission of the department based on the Mathematics Diagnostic Test (MDT 060). Prerequisites are valid for only three years.": {
+    "prerequisites": {
+      "type": "PrerequisiteGroup",
+      "logic": "OR",
+      "children": [
+        {
+          "type": "PrerequisiteGroup",
+          "logic": "OR",
+          "children": [
+            {
+              "type": "ContentScoreRequirement",
+              "content": {
+                "type": "ContentOtherCourse",
+                "course": "Precalculus 11"
+              },
+              "score": {
+                "type": "ScoreLetter",
+                "minGrade": "C"
+              }
+            },
+            {
+              "type": "ContentScoreRequirement",
+              "content": {
+                "type": "ContentOtherCourse",
+                "course": "Foundations of Mathematics 12"
+              },
+              "score": {
+                "type": "ScoreLetter",
+                "minGrade": "C"
+              }
+            }
+          ]
+        },
+        {
+          "type": "ContentScoreRequirement",
+          "content": {
+            "type": "ContentOtherCourse",
+            "course": "Precalculus 12"
+          },
+          "score": {
+            "type": "ScoreLetter",
+            "minGrade": "C-"
+          }
+        },
+        {
+          "type": "ContentScoreRequirement",
+          "content": {
+            "type": "ContentCollegeCourse",
+            "subject": "MATH",
+            "courseCode": "1101",
+            "canBeTakenConcurrently": false
+          },
+          "score": {
+            "type": "ScoreLiteral",
+            "score": "S"
+          }
+        },
+        {
+          "type": "PrerequisiteGroup",
+          "logic": "AND",
+          "children": [
+            {
+              "type": "OtherRequirement",
+              "note": "permission of the department"
+            },
+            {
+              "type": "ContentScoreRequirement",
+              "content": {
+                "type": "ContentExam",
+                "exam": "MDT"
+              },
+              "score": {
+                "type": "ScoreExam",
+                "minScore": 60
+              }
+            }
+          ]
+        }
+      ]
+    }
   }
 }

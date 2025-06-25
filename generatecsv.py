@@ -82,10 +82,17 @@ for source, target, _ in links:
 
 points = {cid: group for cid, group in points.items() if cid in linked_ids}
 
+# Calculate size: number of outgoing links for each point
+from collections import Counter
+size_counter = Counter()
+for target, source, _ in links:
+    if size_counter[source] < 5:
+        size_counter[source] += 1
+
 # Write points.csv
 with open('data/points.csv', 'w', newline='', encoding='utf-8') as f:
     writer = csv.writer(f)
-    writer.writerow(['ID', 'Group', 'url'])
+    writer.writerow(['ID', 'Group', 'url', 'size'])
     for cid, group in points.items():
         # Try to split cid into subject and course_code
         if group not in ("Exam", "HS Course"):
@@ -96,7 +103,9 @@ with open('data/points.csv', 'w', newline='', encoding='utf-8') as f:
                 url = ""
         else:
             url = ""
-        writer.writerow([cid, group, url])
+        size = size_counter.get(cid, 0)
+        writer.writerow([cid, group, url, size])
+
 
 # Write links.csv
 with open('data/links.csv', 'w', newline='', encoding='utf-8') as f:
